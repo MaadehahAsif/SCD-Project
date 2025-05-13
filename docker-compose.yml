@@ -1,44 +1,34 @@
-version: '3'
+version: '3.9'
 
 services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongo:27017/book-reviews
+    depends_on:
+      - mongo
+
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend
+      context: ./frontend
     ports:
       - "3000:80"
     depends_on:
       - backend
-    networks:
-      - app-network
-
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    ports:
-      - "5000:5000"
-    environment:
-      - MONGODB_URI=mongodb://mongo:27017/book-reviews
-      - PORT=5000
-    depends_on:
-      - mongo
-    networks:
-      - app-network
 
   mongo:
-    image: mongo:latest
+    image: mongo
+    container_name: mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
 
 volumes:
   mongo-data:
-    driver: local

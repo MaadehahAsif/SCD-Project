@@ -84,13 +84,12 @@ export const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setLoading(true);
     setError(null);
     try {
+      console.log("Sending review:", review); // ✅ log payload before sending
       const response = await axios.post(`${apiUrl}/reviews`, review);
       setReviews(prev => ({
         ...prev,
         [review.bookId]: [...(prev[review.bookId] || []), response.data]
       }));
-      
-      // Update book average rating
       await fetchBooks();
     } catch (err) {
       setError('Failed to add review. Please try again later.');
@@ -99,30 +98,34 @@ export const BookProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setLoading(false);
     }
   };
+  
 
   const updateReview = async (id: string, review: Partial<Review>) => {
     setLoading(true);
     setError(null);
+  
     try {
       const response = await axios.put(`${apiUrl}/reviews/${id}`, review);
-      if (review.bookId) {
-        setReviews(prev => ({
+  
+      const bookId = review.bookId;
+      if (bookId) {
+        setReviews((prev) => ({
           ...prev,
-          [review.bookId]: prev[review.bookId].map(r => 
+          [bookId]: prev[bookId]?.map((r) =>
             r._id === id ? { ...r, ...response.data } : r
-          )
+          ) || []
         }));
       }
-      
-      // Update book average rating
+  
       await fetchBooks();
     } catch (err) {
-      setError('Failed to update review. Please try again later.');
+      setError("Failed to update review. Please try again later.");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
+  
 
   const deleteReview = async (id: string) => {
     setLoading(true);

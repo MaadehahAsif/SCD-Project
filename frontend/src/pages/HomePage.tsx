@@ -5,17 +5,19 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const HomePage: React.FC = () => {
   const { books, loading, error, fetchBooks } = useBookContext();
-  
+
   useEffect(() => {
     document.title = 'Book Reviews | Home';
     fetchBooks();
   }, [fetchBooks]);
-  
-  if (loading && books.length === 0) {
+
+  console.log('books:', books);
+
+  if (loading && Array.isArray(books) && books.length === 0) {
     return <LoadingSpinner />;
   }
-  
-  if (error && books.length === 0) {
+
+  if (error && Array.isArray(books) && books.length === 0) {
     return (
       <div className="text-center py-10">
         <p className="text-red-500 mb-4">{error}</p>
@@ -28,12 +30,12 @@ const HomePage: React.FC = () => {
       </div>
     );
   }
-  
+
   return (
     <div className="slide-in">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Discover Books and Reviews</h1>
-      
-      {books.length === 0 ? (
+
+      {!Array.isArray(books) || books.length === 0 ? (
         <div className="text-center py-10">
           <p className="text-gray-600 mb-4">No books found in the database.</p>
         </div>

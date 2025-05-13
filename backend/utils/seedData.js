@@ -51,7 +51,7 @@ const reviewsData = [
     bookTitle: 'The Lord of the Rings',
     userName: 'BookLover42',
     rating: 5,
-    comment: 'A true masterpiece of fantasy literature. The world-building is unparalleled and the characters are unforgettable. I've read it multiple times and find something new to appreciate each time.'
+    comment: 'A true masterpiece of fantasy literature. The world-building is unparalleled and the characters are unforgettable. I\'ve read it multiple times and find something new to appreciate each time.'
   },
   {
     bookTitle: 'The Lord of the Rings',
@@ -63,31 +63,31 @@ const reviewsData = [
     bookTitle: 'To Kill a Mockingbird',
     userName: 'LiteraryFan',
     rating: 5,
-    comment: 'This book should be required reading for everyone. The lessons about empathy and standing up for what's right are as relevant today as they were when it was written. Atticus Finch is the moral compass we all need.'
+    comment: 'This book should be required reading for everyone. The lessons about empathy and standing up for whats right are as relevant today as they were when it was written. Atticus Finch is the moral compass we all need.'
   },
   {
     bookTitle: '1984',
     userName: 'DystopiaEnthusiast',
     rating: 4,
-    comment: 'Chilling and prophetic. Orwell's vision of a surveillance state feels more relevant with each passing year. The ending is devastating but necessary.'
+    comment: 'Chilling and prophetic. Orwells vision of a surveillance state feels more relevant with each passing year. The ending is devastating but necessary.'
   },
   {
     bookTitle: 'Pride and Prejudice',
     userName: 'ClassicsReader',
     rating: 5,
-    comment: 'Jane Austen's wit and sharp social commentary shine in this perfect romance. Elizabeth Bennet is one of literature's most delightful heroines, and her relationship with Darcy has defined the enemies-to-lovers trope for generations.'
+    comment: 'Jane Austen\'s wit and sharp social commentary shine in this perfect romance. Elizabeth Bennet is one of literature\'s most delightful heroines, and her relationship with Darcy has defined the enemies-to-lovers trope for generations.'
   },
   {
     bookTitle: 'The Great Gatsby',
     userName: 'LiteraryScholar',
     rating: 4,
-    comment: 'Fitzgerald's prose is like poetry, and his portrayal of the Jazz Age is both seductive and damning. Gatsby's pursuit of the American Dream is both inspiring and cautionary.'
+    comment: 'Fitzgerald\'s prose is like poetry, and his portrayal of the Jazz Age is both seductive and damning. Gatsby\'s pursuit of the American Dream is both inspiring and cautionary.'
   },
   {
     bookTitle: 'The Hobbit',
     userName: 'MiddleEarthFan',
     rating: 5,
-    comment: 'More accessible than The Lord of the Rings but just as enchanting. Bilbo's journey from reluctant burglar to hero is perfectly paced, and the world is rich with wonder. A perfect introduction to fantasy literature.'
+    comment: 'More accessible than The Lord of the Rings but just as enchanting. Bilbos journey from reluctant burglar to hero is perfectly paced, and the world is rich with wonder. A perfect introduction to fantasy literature.'
   },
   {
     bookTitle: 'The Hobbit',

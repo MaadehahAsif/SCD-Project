@@ -58,10 +58,11 @@ const EditReviewPage: React.FC = () => {
   
   const handleSubmit = async (values: { userName: string; rating: number; comment: string }) => {
     if (!id || !review) return;
-    
+  
     setIsSubmitting(true);
     try {
       await updateReview(id, {
+        bookId: review.bookId, // ✅ ensure backend receives bookId
         userName: values.userName,
         rating: values.rating,
         comment: values.comment
@@ -73,6 +74,7 @@ const EditReviewPage: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+  
   
   if (loading) {
     return <LoadingSpinner />;

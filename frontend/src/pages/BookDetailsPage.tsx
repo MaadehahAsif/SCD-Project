@@ -12,24 +12,32 @@ const BookDetailsPage: React.FC = () => {
   
   const book = books.find(b => b._id === id);
   const bookReviews = id ? reviews[id] || [] : [];
-  
+
+  // Fetch book list if not already available
   useEffect(() => {
     if (!book) {
       fetchBooks();
     }
-    
+  }, [book, fetchBooks]);
+
+  // Fetch reviews only once when the page loads
+  useEffect(() => {
     if (id) {
       fetchBookReviews(id);
-      if (book) {
-        document.title = `${book.title} | Book Reviews`;
-      }
     }
-  }, [id, book, fetchBooks, fetchBookReviews]);
-  
+  }, [id, fetchBookReviews]);
+
+  // Set page title based on the book
+  useEffect(() => {
+    if (book) {
+      document.title = `${book.title} | Book Reviews`;
+    }
+  }, [book]);
+
   if (loading && !book) {
     return <LoadingSpinner />;
   }
-  
+
   if (error && !book) {
     return (
       <div className="text-center py-10">
@@ -43,7 +51,7 @@ const BookDetailsPage: React.FC = () => {
       </div>
     );
   }
-  
+
   if (!book) {
     return (
       <div className="text-center py-10">
@@ -57,7 +65,7 @@ const BookDetailsPage: React.FC = () => {
       </div>
     );
   }
-  
+
   return (
     <div className="slide-in">
       <Link 
